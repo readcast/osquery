@@ -21,7 +21,7 @@ class Augeas < AbstractOsqueryFormula
 
   def install
     ENV.append_to_cflags "-I/usr/include/libxml2" if OS.mac?
-    system "./autogen.sh", "--without-selinux", "--prefix=#{prefix}"
+    system "./autogen.sh", "--without-selinux", "--prefix=#{prefix}", "ac_cv_prog_YACC=#{HOMEBREW_PREFIX}/opt/bison/bin/yacc"
 
     # Build the local gnulib checkout.
     cd "gnulib/lib" do
